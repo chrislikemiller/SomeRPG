@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Somerpg.Client", "Somerpg\Somerpg.Client.csproj", "{A1D0CA87-DDDB-4558-B3CA-1E1A5F222550}"
+EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Somerpg.Server", "Somerpg.Server\Somerpg.Server.fsproj", "{3920C546-44E6-4112-BA97-4C84089A2A54}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Somerpg.Tests", "Somerpg.Tests\Somerpg.Tests.csproj", "{17F82FCA-F2A6-4154-81FA-DD6F012B9A1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Somerpg.Common", "Somerpg.Common\Somerpg.Common.csproj", "{6700F9F3-1119-4319-AD17-089C6A0AF9CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Somerpg.API", "Somerpg.API\Somerpg.API.csproj", "{42F719D0-9C72-4CA4-8303-E96D0BA45756}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1D0CA87-DDDB-4558-B3CA-1E1A5F222550}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1D0CA87-DDDB-4558-B3CA-1E1A5F222550}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1D0CA87-DDDB-4558-B3CA-1E1A5F222550}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1D0CA87-DDDB-4558-B3CA-1E1A5F222550}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3920C546-44E6-4112-BA97-4C84089A2A54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3920C546-44E6-4112-BA97-4C84089A2A54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3920C546-44E6-4112-BA97-4C84089A2A54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3920C546-44E6-4112-BA97-4C84089A2A54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17F82FCA-F2A6-4154-81FA-DD6F012B9A1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17F82FCA-F2A6-4154-81FA-DD6F012B9A1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17F82FCA-F2A6-4154-81FA-DD6F012B9A1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17F82FCA-F2A6-4154-81FA-DD6F012B9A1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6700F9F3-1119-4319-AD17-089C6A0AF9CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6700F9F3-1119-4319-AD17-089C6A0AF9CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6700F9F3-1119-4319-AD17-089C6A0AF9CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6700F9F3-1119-4319-AD17-089C6A0AF9CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42F719D0-9C72-4CA4-8303-E96D0BA45756}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42F719D0-9C72-4CA4-8303-E96D0BA45756}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42F719D0-9C72-4CA4-8303-E96D0BA45756}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42F719D0-9C72-4CA4-8303-E96D0BA45756}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D551CE2-BD22-41B6-960D-BA0BDC94E323}
+	EndGlobalSection
+EndGlobal

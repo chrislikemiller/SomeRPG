@@ -1,0 +1,238 @@
+﻿<Window x:Class="Somerpg.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
+        xmlns:converters="clr-namespace:Somerpg.View.Converters"
+        mc:Ignorable="d"
+        Title="Some RPG"
+        Height="450"
+        Width="1200">
+    <Window.Resources>
+        <converters:BooleanToEffectConverter x:Key="BooleanToEffectConverter" />
+        <converters:ActionToTimeLeftConverter x:Key="ActionToTimeLeftConverter" />
+        <converters:PlayerXPConverter x:Key="PlayerXPConverter" />
+        <controls:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+        <Style x:Key="TextLabelStyle"
+               TargetType="TextBlock">
+            <Setter Property="Margin"
+                    Value="4" />
+            <Setter Property="Width"
+                    Value="55" />
+        </Style>
+        <Style x:Key="DataLabelStyle"
+               TargetType="TextBlock"
+               BasedOn="{StaticResource TextLabelStyle}">
+            <Setter Property="FontWeight"
+                    Value="Bold" />
+            <Setter Property="Width"
+                    Value="140" />
+        </Style>
+        <Style x:Key="HighlightedDataLabelStyle"
+               TargetType="TextBlock"
+               BasedOn="{StaticResource DataLabelStyle}">
+            <Setter Property="Foreground"
+                    Value="Orange" />
+        </Style>
+
+        <Style x:Key="BaseButtonStyle"
+               TargetType="Button">
+            <Setter Property="Margin"
+                    Value="5" />
+            <Setter Property="Height"
+                    Value="25" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsActionInProgress}"
+                             Value="True">
+                    <Setter Property="IsEnabled"
+                            Value="False" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid Effect="{Binding IsToolWindowOpen, Converter={StaticResource BooleanToEffectConverter}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Text="Name:"
+                       Style="{StaticResource TextLabelStyle}"
+                       Grid.Column="0"
+                       Grid.Row="0" />
+            <TextBlock Text="Level:"
+                       Style="{StaticResource TextLabelStyle}"
+                       Grid.Column="0"
+                       Grid.Row="1" />
+            <TextBlock Text="XP:"
+                       Style="{StaticResource TextLabelStyle}"
+                       Grid.Column="0"
+                       Grid.Row="2" />
+            <TextBlock Text="Gold:"
+                       Style="{StaticResource TextLabelStyle}"
+                       Grid.Column="0"
+                       Grid.Row="3" />
+
+            <TextBlock Text="{Binding Player.Name}"
+                       Style="{StaticResource DataLabelStyle}"
+                       Grid.Column="1"
+                       Grid.Row="0" />
+            <TextBlock Text="{Binding Player.Level}"
+                       Style="{StaticResource DataLabelStyle}"
+                       Grid.Column="1"
+                       Grid.Row="1" />
+            <TextBlock Text="{Binding Player, Converter={StaticResource PlayerXPConverter}}"
+                       Style="{StaticResource DataLabelStyle}"
+                       Grid.Column="1"
+                       Grid.Row="2" />
+            <TextBlock Text="{Binding Player.Inventory.Gold, StringFormat=N0}"
+                       Style="{StaticResource DataLabelStyle}"
+                       Grid.Column="1"
+                       Grid.Row="3" />
+
+            <TextBlock Text="HP:"
+                       Style="{StaticResource TextLabelStyle}"
+                       Grid.Column="2"
+                       Grid.Row="0" />
+            <TextBlock Text="Atk:"
+                       Style="{StaticResource TextLabelStyle}"
+                       Grid.Column="2"
+                       Grid.Row="1" />
+            <TextBlock Text="Armor:"
+                       Style="{StaticResource TextLabelStyle}"
+                       Grid.Column="2"
+                       Grid.Row="2" />
+            <TextBlock Text="Weapon:"
+                       Style="{StaticResource TextLabelStyle}"
+                       Grid.Column="2"
+                       Grid.Row="3" />
+            <TextBlock Text="{Binding Player.HP, StringFormat=N0}"
+                       Style="{StaticResource DataLabelStyle}"
+                       Grid.Column="3"
+                       Grid.Row="0" />
+            <TextBlock Text="{Binding Player.Attack, StringFormat=N0}"
+                       Style="{StaticResource DataLabelStyle}"
+                       Grid.Column="3"
+                       Grid.Row="1" />
+            <TextBlock Text="{Binding Player.Armor}"
+                       Style="{StaticResource DataLabelStyle}"
+                       Grid.Column="3"
+                       Grid.Row="2" />
+            <TextBlock Text="{Binding Player.Weapon}"
+                       Style="{StaticResource DataLabelStyle}"
+                       Grid.Column="3"
+                       Grid.Row="3" />
+
+            <TextBlock Text="Wood:"
+                       Style="{StaticResource TextLabelStyle}"
+                       Grid.Column="4"
+                       Grid.Row="0" />
+            <TextBlock Text="Metal:"
+                       Style="{StaticResource TextLabelStyle}"
+                       Grid.Column="4"
+                       Grid.Row="1" />
+            <TextBlock Text="Leather:"
+                       Style="{StaticResource TextLabelStyle}"
+                       Grid.Column="4"
+                       Grid.Row="2" />
+            <TextBlock Text="{Binding Player.Inventory.Materials.Wood}"
+                       Style="{StaticResource DataLabelStyle}"
+                       Grid.Column="5"
+                       Grid.Row="0" />
+            <TextBlock Text="{Binding Player.Inventory.Materials.Metal}"
+                       Style="{StaticResource DataLabelStyle}"
+                       Grid.Column="5"
+                       Grid.Row="1" />
+            <TextBlock Text="{Binding Player.Inventory.Materials.Leather}"
+                       Style="{StaticResource DataLabelStyle}"
+                       Grid.Column="5"
+                       Grid.Row="2" />
+
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="0"
+                        Grid.Column="6">
+                <TextBlock Text="In progress:"
+                           Style="{StaticResource TextLabelStyle}"
+                           Visibility="{Binding IsActionInProgress, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <TextBlock Text="{Binding CurrentAction.Description, FallbackValue=None, UpdateSourceTrigger=PropertyChanged}"
+                           Style="{StaticResource HighlightedDataLabelStyle}"
+                           Visibility="{Binding IsActionInProgress, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <TextBlock Text="{Binding CurrentAction, Converter={StaticResource ActionToTimeLeftConverter}, UpdateSourceTrigger=PropertyChanged}"
+                           Style="{StaticResource HighlightedDataLabelStyle}"
+                           Visibility="{Binding IsActionInProgress, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            </StackPanel>
+
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="150" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <StackPanel>
+                    <Button Content="T1 dungeon"
+                            Style="{StaticResource BaseButtonStyle}"
+                            Command="{Binding DoDungeonCommand}"
+                            CommandParameter="1" />
+                    <Button Content="T2 dungeon"
+                            Style="{StaticResource BaseButtonStyle}"
+                            Command="{Binding DoDungeonCommand}"
+                            CommandParameter="2" />
+                    <Button Content="T3 dungeon"
+                            Style="{StaticResource BaseButtonStyle}"
+                            Command="{Binding DoDungeonCommand}"
+                            CommandParameter="3" />
+                </StackPanel>
+            </Grid>
+            <Border Grid.Column="1"
+                    Margin="5"
+                    BorderBrush="Gray"
+                    BorderThickness="1">
+                <ListView ItemsSource="{Binding Logs}">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel VerticalAlignment="Bottom" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <WrapPanel>
+                                <TextBlock Text="{Binding}" />
+                            </WrapPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Border>
+            <Grid Grid.Column="2">
+                <StackPanel>
+                    <Button Content="Inventory"
+                            Style="{StaticResource BaseButtonStyle}"
+                            Command="{Binding ManageInventoryCommand}" />
+                    <Button Content="Craft"
+                            Style="{StaticResource BaseButtonStyle}"
+                            Command="{Binding CraftItemsCommand}" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

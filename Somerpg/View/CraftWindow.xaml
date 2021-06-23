@@ -1,0 +1,104 @@
+﻿<Window x:Class="Somerpg.View.CraftWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:converters="clr-namespace:Somerpg.View.Converters"
+        mc:Ignorable="d"
+        Title="Craft"
+        Height="350"
+        Width="275">
+    <Grid>
+        <Grid.Resources>
+            <converters:RequiredResourceConverter x:Key="RequiredResourceConverter" />
+            <Style x:Key="ListBoxStyle"
+                   TargetType="ListBox">
+                <Setter Property="Margin"
+                        Value="5" />
+            </Style>
+            <Style x:Key="TextLabelStyle"
+                   TargetType="TextBlock">
+                <Setter Property="Margin"
+                        Value="5" />
+            </Style>
+            <Style x:Key="DataLabelStyle"
+                   TargetType="TextBlock"
+                   BasedOn="{StaticResource TextLabelStyle}">
+                <Setter Property="FontWeight"
+                        Value="Bold" />
+            </Style>
+        </Grid.Resources>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="35" />
+        </Grid.RowDefinitions>
+        <ListBox SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}"
+                 ItemsSource="{Binding Items}"
+                 Style="{StaticResource ListBoxStyle}"
+                 Grid.Column="0"
+                 Grid.Row="0" />
+
+        <ListBox SelectedItem="{Binding SelectedTier, UpdateSourceTrigger=PropertyChanged}"
+                 ItemsSource="{Binding Tiers}"
+                 Style="{StaticResource ListBoxStyle}"
+                 Grid.Column="1"
+                 Grid.Row="0" />
+
+
+        <GroupBox Header="Requirements"
+                  Grid.Row="1"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="77" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock Text="Wood:"
+                           Style="{StaticResource TextLabelStyle}"
+                           Grid.Row="0"
+                           Grid.Column="0" />
+                <TextBlock Text="Metal:"
+                           Style="{StaticResource TextLabelStyle}"
+                           Grid.Row="1"
+                           Grid.Column="0" />
+                <TextBlock Text="Leather:"
+                           Style="{StaticResource TextLabelStyle}"
+                           Grid.Row="2"
+                           Grid.Column="0" />
+
+                <TextBlock Text="{Binding Materials, Converter={StaticResource RequiredResourceConverter}, ConverterParameter=Wood}"
+                           Style="{StaticResource DataLabelStyle}"
+                           Grid.Row="0"
+                           Grid.Column="1" />
+                <TextBlock Text="{Binding Materials, Converter={StaticResource RequiredResourceConverter}, ConverterParameter=Metal}"
+                           Style="{StaticResource DataLabelStyle}"
+                           Grid.Row="1"
+                           Grid.Column="1" />
+                <TextBlock Text="{Binding Materials, Converter={StaticResource RequiredResourceConverter}, ConverterParameter=Leather}"
+                           Style="{StaticResource DataLabelStyle}"
+                           Grid.Row="2"
+                           Grid.Column="1" />
+            </Grid>
+        </GroupBox>
+
+        <Button Content="Craft"
+                Command="{Binding CraftCommand}"
+                IsEnabled="{Binding HasEnoughMaterials}"
+                Margin="4"
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2" />
+    </Grid>
+</Window>
